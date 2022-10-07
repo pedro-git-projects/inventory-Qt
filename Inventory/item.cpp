@@ -5,7 +5,9 @@ Item::Item() {
 }
 
 Item::Item(QString name, int quantity, QString imageFilePath) {
-
+    this->name = name;
+    this->quantity = quantity;
+    this->imageFilePath = imageFilePath;
 }
 
 QString Item::getName() const {

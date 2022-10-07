@@ -17,7 +17,7 @@ void MainWindow::handleMenuItemNew() {
     addItemDialog.exec();
 
     if(newItem != nullptr) {
-        productList.push_back(newItem);
+        this->productList.push_back(newItem);
         ui->lstProducts->addItem(newItem->getName());
     }
 }
