@@ -16,7 +16,7 @@
    </font>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Inventory App</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QListWidget" name="lstProducts">

@@ -16,7 +16,7 @@
    </font>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Update Item</string>
   </property>
   <widget class="QLabel" name="label">
    <property name="geometry">

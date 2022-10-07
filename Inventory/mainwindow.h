@@ -2,6 +2,8 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QVector>
+#include "item.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -14,8 +16,11 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+    void handleMenuItemNew();
+
 private:
     Ui::MainWindow *ui;
+    QVector<Item*> productList;
 };
 
 #endif // MAINWINDOW_H
