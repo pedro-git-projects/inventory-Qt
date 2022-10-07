@@ -126,8 +126,46 @@
      <height>27</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="menuNewProduct"/>
+    <addaction name="menuEditSelectedProduct"/>
+    <addaction name="separator"/>
+    <addaction name="menuSaveProducts"/>
+    <addaction name="menuLoadProducts"/>
+    <addaction name="separator"/>
+    <addaction name="menuExit"/>
+   </widget>
+   <addaction name="menuFile"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <action name="menuNewProduct">
+   <property name="text">
+    <string>New Product</string>
+   </property>
+  </action>
+  <action name="menuEditSelectedProduct">
+   <property name="text">
+    <string>Edit Selected Product</string>
+   </property>
+  </action>
+  <action name="menuSaveProducts">
+   <property name="text">
+    <string>Save Products</string>
+   </property>
+  </action>
+  <action name="menuLoadProducts">
+   <property name="text">
+    <string>Load Prodcuts</string>
+   </property>
+  </action>
+  <action name="menuExit">
+   <property name="text">
+    <string>Exit</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections/>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>btnLoadItemImage</class>
- <widget class="QDialog" name="btnLoadItemImage">
+ <class>UpdateItemDialog</class>
+ <widget class="QDialog" name="UpdateItemDialog">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -89,7 +89,7 @@
     <string/>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton">
+  <widget class="QPushButton" name="btnLoadItemImage_2">
    <property name="geometry">
     <rect>
      <x>30</x>
