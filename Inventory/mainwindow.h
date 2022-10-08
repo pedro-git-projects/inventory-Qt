@@ -17,6 +17,7 @@ public:
     ~MainWindow();
 
     void handleMenuItemNew();
+    void removeSelectedProduct();
 
 private:
     Ui::MainWindow *ui;
