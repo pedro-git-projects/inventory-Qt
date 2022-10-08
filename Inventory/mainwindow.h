@@ -1,6 +1,7 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include <QListWidgetItem>
 #include <QMainWindow>
 #include <QVector>
 #include "item.h"
@@ -18,6 +19,7 @@ public:
 
     void handleMenuItemNew();
     void removeSelectedProduct();
+    void handleClick(QListWidgetItem* item);
 
 private:
     Ui::MainWindow *ui;

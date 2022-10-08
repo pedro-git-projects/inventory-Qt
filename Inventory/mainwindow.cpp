@@ -6,8 +6,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) , ui(new Ui::MainW
     ui->setupUi(this);
 
     connect(ui->menuNewProduct, &QAction::triggered, this, &MainWindow::handleMenuItemNew);
-
     connect(ui->btnRemove, &QPushButton::clicked, this, &MainWindow::removeSelectedProduct);
+    connect(ui->lstProducts, &QListWidget::itemClicked, this, &MainWindow::handleClick);
 }
 
 
@@ -34,6 +34,22 @@ void MainWindow::removeSelectedProduct() {
 
        // removing from ui
        delete ui->lstProducts->currentItem();
+    }
+}
+
+void MainWindow::handleClick(QListWidgetItem* item) {
+    auto index{ item->listWidget()->currentRow() };
+
+    if(index != -1) {
+        Item* currentItem = productList.at(index);
+        if(currentItem != nullptr) {
+            ui->lblProductName->setText(currentItem->getName());
+            ui->lblQuantity->setText(QString::number(currentItem->getQuantity()));
+
+            QPixmap pixmap(currentItem->getFilePath());
+            ui->lblImage->setPixmap(pixmap);
+            ui->lblImage->setScaledContents(true);
+        }
     }
 }
 
