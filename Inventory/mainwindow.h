@@ -20,6 +20,7 @@ public:
     void handleMenuItemNew();
     void removeSelectedProduct();
     void handleClick(QListWidgetItem* item);
+    void handleMenuItemEdit();
 
 private:
     Ui::MainWindow *ui;

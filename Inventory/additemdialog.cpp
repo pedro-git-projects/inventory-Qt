@@ -39,7 +39,7 @@ void AddItemDialog::confirmAdd() {
 
 void AddItemDialog::loadItemImage() {
     QString filename;
-    filename = QFileDialog::getOpenFileName(this, "Open Image", "./", "Image Files (*.png, *.jpg");
+    filename = QFileDialog::getOpenFileName(this, "Open Image", "./", "Image Files (*.png *.jpg");
     if(filename != "") {
         int lastSlash = filename.lastIndexOf("/");
         QString shortName = filename.right(filename.size() - lastSlash - 1);

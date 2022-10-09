@@ -1,6 +1,9 @@
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
 #include "additemdialog.h"
+#include "updateitemdialog.h"
+
+#include <QMessageBox>
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) , ui(new Ui::MainWindow) {
     ui->setupUi(this);
@@ -8,6 +11,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) , ui(new Ui::MainW
     connect(ui->menuNewProduct, &QAction::triggered, this, &MainWindow::handleMenuItemNew);
     connect(ui->btnRemove, &QPushButton::clicked, this, &MainWindow::removeSelectedProduct);
     connect(ui->lstProducts, &QListWidget::itemClicked, this, &MainWindow::handleClick);
+    connect(ui->menuEditSelectedProduct, &QAction::triggered, this, &MainWindow::handleMenuItemEdit);
 }
 
 
@@ -51,6 +55,27 @@ void MainWindow::handleClick(QListWidgetItem* item) {
             ui->lblImage->setScaledContents(true);
         }
     }
+}
+
+void MainWindow::handleMenuItemEdit() {
+    auto index = ui->lstProducts->currentRow();
+
+    if(index != -1) {
+       Item* currentItem = productList.at(index);
+
+       if(currentItem != nullptr) {
+           UpdateItemDialog updateItemDialog(currentItem, nullptr);
+           updateItemDialog.exec();
+
+           ui->lblProductName->setText(currentItem->getName());
+           ui->lblQuantity->setText(QString::number( currentItem->getQuantity()));
+
+           QPixmap pixmap(currentItem->getFilePath());
+           ui->lblImage->setPixmap(pixmap);
+           ui->lblImage->setScaledContents(true);
+       }
+    }
+
 }
 
 
