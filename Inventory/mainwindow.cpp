@@ -43,6 +43,11 @@ void MainWindow::removeSelectedProduct() {
        // removing from ui
        delete ui->lstProducts->currentItem();
     }
+    // cleaning ui
+    QPixmap pixmap("void.png");
+    ui->lblImage->setPixmap(pixmap);
+    ui->lblProductName->setText("");
+    ui->lblQuantity->setText("");
 }
 
 void MainWindow::handleClick(QListWidgetItem* item) {
