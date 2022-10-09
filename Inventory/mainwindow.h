@@ -21,6 +21,8 @@ public:
     void removeSelectedProduct();
     void handleClick(QListWidgetItem* item);
     void handleMenuItemEdit();
+    void handleSaveItems();
+    void handleLoadItems();
 
 private:
     Ui::MainWindow *ui;

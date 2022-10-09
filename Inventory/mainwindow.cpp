@@ -3,7 +3,9 @@
 #include "additemdialog.h"
 #include "updateitemdialog.h"
 
+#include <QFile>
 #include <QMessageBox>
+#include <QTextStream>
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) , ui(new Ui::MainWindow) {
     ui->setupUi(this);
@@ -12,6 +14,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) , ui(new Ui::MainW
     connect(ui->btnRemove, &QPushButton::clicked, this, &MainWindow::removeSelectedProduct);
     connect(ui->lstProducts, &QListWidget::itemClicked, this, &MainWindow::handleClick);
     connect(ui->menuEditSelectedProduct, &QAction::triggered, this, &MainWindow::handleMenuItemEdit);
+    connect(ui->menuSaveProducts, &QAction::triggered, this, &MainWindow::handleSaveItems);
+    connect(ui->menuLoadProducts, &QAction::triggered, this, &MainWindow::handleLoadItems);
 }
 
 
@@ -78,6 +82,24 @@ void MainWindow::handleMenuItemEdit() {
 
 }
 
+void MainWindow::handleSaveItems() {
+    QFile outputFile{"products.txt"};
+    outputFile.open(QIODevice::WriteOnly | QIODevice::Text);
+    QTextStream out(&outputFile);
+
+    for(Item* product : productList) {
+        out << product->getName() << ",";
+        out << product->getQuantity() << ",";
+        out << product->getFilePath() << Qt::endl;
+    }
+
+    out.flush();
+    outputFile.close();
+}
+
+void MainWindow::handleLoadItems() {
+
+}
 
 MainWindow::~MainWindow() {
     delete ui;
