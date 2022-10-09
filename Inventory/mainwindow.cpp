@@ -98,7 +98,33 @@ void MainWindow::handleSaveItems() {
 }
 
 void MainWindow::handleLoadItems() {
+    QFile inputFile("products.txt");
+    inputFile.open(QIODevice::ReadOnly | QIODevice::Text);
 
+    QTextStream in(&inputFile);
+    for(Item* temp : productList) {
+       delete temp;
+    }
+    productList.clear(); // model
+    ui->lstProducts->clear(); // view
+
+    while(!in.atEnd()) {
+       QString line = in.readLine();
+       QStringList info = line.split(",");
+
+       ui->lstProducts->addItem(info.at(0));
+
+       Item* product = new Item (
+                   info.at(0),
+                   info.at(1).toInt(),
+                   info.at(2)
+                   );
+
+       productList.push_back(product);
+    }
+
+    in.flush();
+    inputFile.close();
 }
 
 MainWindow::~MainWindow() {
