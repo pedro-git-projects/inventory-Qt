@@ -128,6 +128,8 @@ void MainWindow::handleLoadItems() {
 }
 
 MainWindow::~MainWindow() {
+    for(Item* product : productList) delete product;
+    productList.clear();
     delete ui;
 }
 
